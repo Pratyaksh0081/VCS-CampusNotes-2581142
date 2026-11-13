@@ -79,3 +79,48 @@ button:hover {
     background: #dc3545;
     margin-top: 10px;
 }
+
+/* Improved responsive layout and interactions */
+
+main {
+    width: 90%;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #365b94;
+    box-shadow: 0 0 5px rgba(54, 91, 148, 0.35);
+}
+
+button {
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+.note-card {
+    border: 1px solid #e0e6ed;
+    transition: box-shadow 0.3s ease;
+}
+
+.note-card:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 22px 15px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    main {
+        margin: 20px auto;
+        padding: 18px;
+    }
+}
