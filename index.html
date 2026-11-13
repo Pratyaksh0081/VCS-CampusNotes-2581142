@@ -26,7 +26,12 @@
         <button onclick="addNote()">Add Note</button>
 
         <h2>My Notes</h2>
-        <div id="notes"></div>
+
+<input type="text" id="searchInput"
+       placeholder="Search your notes..."
+       oninput="filterNotes()">
+
+<div id="notes"></div>
     </main>
 
     <script src="script.js"></script>

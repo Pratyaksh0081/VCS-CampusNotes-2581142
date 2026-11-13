@@ -1,11 +1,20 @@
 
 let notes = JSON.parse(localStorage.getItem("campusNotes")) || [];
 
-function displayNotes() {
+function displayNotes(searchTerm = "") {
     const notesContainer = document.getElementById("notes");
     notesContainer.innerHTML = "";
 
+    const search = searchTerm.toLowerCase().trim();
+
     notes.forEach((note, index) => {
+        if (
+            !note.subject.toLowerCase().includes(search) &&
+            !note.content.toLowerCase().includes(search)
+        ) {
+            return;
+        }
+
         const card = document.createElement("div");
         card.className = "note-card";
 
@@ -28,6 +37,11 @@ function displayNotes() {
     });
 }
 
+function filterNotes() {
+    const searchTerm = document.getElementById("searchInput").value;
+    displayNotes(searchTerm);
+}
+
 function addNote() {
     const subject = document.getElementById("subject").value.trim();
     const content = document.getElementById("note").value.trim();
@@ -44,7 +58,7 @@ function addNote() {
     document.getElementById("subject").value = "";
     document.getElementById("note").value = "";
 
-    displayNotes();
+    displayNotes(document.getElementById("searchInput").value);
 }
 
 function deleteNote(index) {
@@ -52,7 +66,7 @@ function deleteNote(index) {
 
     localStorage.setItem("campusNotes", JSON.stringify(notes));
 
-    displayNotes();
+    displayNotes(document.getElementById("searchInput").value);
 }
 
 displayNotes();
