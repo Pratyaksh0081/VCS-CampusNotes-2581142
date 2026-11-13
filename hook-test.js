@@ -1,1 +1,1 @@
-// This is a valid test file
+// Testing commit message validation
