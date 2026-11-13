@@ -1,5 +1,11 @@
+let notes = [];
 
-let notes = JSON.parse(localStorage.getItem("campusNotes")) || [];
+try {
+    const savedNotes = JSON.parse(localStorage.getItem("campusNotes"));
+    notes = Array.isArray(savedNotes) ? savedNotes : [];
+} catch (error) {
+    notes = [];
+}
 
 function displayNotes(searchTerm = "") {
     const notesContainer = document.getElementById("notes");
